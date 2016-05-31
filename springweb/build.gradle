@@ -10,11 +10,18 @@ sourceCompatibility = 1.7
 ext {
 	junitVersion = '4.12'
 	springframeworkVersion = '4.2.5.RELEASE'
+	slf4jVersion = '1.7.18'
+	log4jVersion = '2.5'
 }
 
 repositories {
 	mavenCentral()
 }
+
+// Exclude commons-loggin Dependency in all project
+//configurations {
+//	exclude group: 'commons-logging', module: 'commons-logging'
+//}
 
 dependencies {
 	testCompile group: 'junit', name: 'junit', version: "${junitVersion}"
@@ -23,6 +30,13 @@ dependencies {
 	compile group: 'org.springframework', name: 'spring-context', version: "${springframeworkVersion}"
 	compile group: 'org.springframework', name: 'spring-web', version: "${springframeworkVersion}"
 	compile group: 'org.springframework', name: 'spring-webmvc', version: "${springframeworkVersion}"
+
+	// slf4j & log4j2 Dependency
+	compile group: 'org.slf4j', name: 'slf4j-api', version: "${slf4jVersion}"
+	compile group: 'org.slf4j', name: 'jcl-over-slf4j', version: "${slf4jVersion}"
+	compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: "${log4jVersion}"
+	compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: "${log4jVersion}"
+	compile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: "${log4jVersion}"
 
 	// servlet-api (for using Java Config)
 	// (over 3.0 spec and Using tomcat over 7.0)
